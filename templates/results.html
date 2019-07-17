@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+      <div class="card-columns">
+        {% for book in books %}
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent border-success"><h4 class="card-title">{{book['title']}}</h4></div>
+  <div class="card-body text-success">
+    <h6 class="card-text">{{book['author']}}</h6>
+    <h6 class="card-text">{{book['year']}}</h6>
+    <h6 class="card-text">{{book['isbn']}}</h6>
+  </div>
+  <div class="card-footer bg-transparent border-success"><a href="/book/{{book['isbn']}}" class="card-link">Go to book page</a></div>
+</div>
+  {% endfor %}
+</div>
+      </div>
+{% endblock %}

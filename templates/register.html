@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+          <form action="/register" method="POST" style="width:350px; margin: auto; padding: 0px 20px;">
+            <h5 style="text-align= center;">REGISTER / <a href="/login">LOGIN</a></h5>
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="USERNAME" name="username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="password" placeholder="PASSWORD" name="password" onkeyup='check();'>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="confirm_password" placeholder="CONFIRM PASSWORD" name="confirmation " onkeyup='check();'>
+            </div>
+            <button type="submit" class="btn btn-primary" id="myBtn">Submit</button>
+          </form>
+          <span id="message" style="position: absolute; left: 960px; top: 233px;"></span>
+      </div>
+
+
+      <script type="text/javascript">
+        var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value && document.getElementById('password').value != ""){
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>Passwords match.';
+    document.getElementById("myBtn").disabled = false;
+        } else if (document.getElementById('password').value !=
+          document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>Passwords do not match.';
+    document.getElementById("myBtn").disabled = true;
+          }
+          else{
+            document.getElementById('message').innerHTML = '';
+            document.getElementById("myBtn").disabled = false;
+          }
+      }
+      </script>
+{% endblock %}

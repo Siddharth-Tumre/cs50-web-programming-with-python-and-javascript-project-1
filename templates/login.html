@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+          <form action="/login" method="POST" style="width:350px; margin: auto; padding:0px 20px;">
+            <h5 style="text-align= center;">LOGIN / <a href="/register">REGISTER</a></h5>
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="USERNAME" name="username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="PASSWORD" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+{% endblock %}

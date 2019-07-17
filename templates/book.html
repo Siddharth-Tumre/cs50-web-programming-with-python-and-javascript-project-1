@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">{{ book_details['title'] }}</h1>
+          <p class="lead" style="font-size: 20px;"><b>{{ book_details['author'] }}</b></p>
+          <p class="lead"><b>YEAR:</b> {{ book_details['year'] }}</p>
+          <p class="lead"><b>ISBN:</b>{{ book_details['isbn'] }}</p>
+          <p class="lead" style="font-size: 22px;">good<b>reads</b> Average rating: {{ res['books'][0]['average_rating'] }}</p>
+          <p class="lead" style="font-size: 22px;">good<b>reads</b> Total No of Ratings: {{ res['books'][0]['work_ratings_count'] }}</p>
+          <p class="lead"><a href="https://www.goodreads.com/search?q={{book_details['title']}}">Visit the Goodreads page</a></p>
+        </div>
+      </div>
+      <div class="dropdown-divider"></div>
+
+      <div class="alert alert-secondary" role="alert" style="font-size: 20px;"><strong><u>User Reviews</u></strong></div>
+      <h5>What is your review about this book?</h5>
+
+      <div class="row" style="justify-content: center; padding:0px 15px">
+        <form class="form-inline" style="justify-content: center;" method="post">
+
+
+          <div class="input-group" style="margin-bottom: 10px; width: 100%;">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Rating</span>
+              </div>
+              <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="rating">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                <option value="4">Four</option
+                <option value="5">Five</option>
+              </select>
+          </div>
+          <div class="input-group" style="margin-bottom: 10px; width: 100%;">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">your views</span>
+              </div>
+              <textarea name="comment" id="comment" class="form-control" rows="1" cols="30" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary my-1">Submit</button>
+        </form>
+        </div>
+        <div id="userReviews">
+            <h2></h2>
+            {% for review in reviews %}
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">{{review['username']}} said...</h5>
+                  <p class="card-text">{{review['review']}}</p>
+                  <p class="card-text"><b>Rated:</b> {{review['rating']}}</p>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+{% endblock %}
